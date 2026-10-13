@@ -1,0 +1,206 @@
+{
+  "suite_name": "INT-377 Architectural Merge Decisions QA Verification",
+  "timestamp": "2026-10-13T10:59:29.431713",
+  "ticket_id": "INT-377",
+  "ticket_code": "S00-ST01-T01",
+  "lead_engineer": "Ashish Singh",
+  "checks": [
+    {
+      "check_id": "CHK-001",
+      "description": "Project Charter Markdown Document Presence & Minimum Size",
+      "status": "PASS",
+      "details": {
+        "path": "/Users/ashishsingh/Projects/CMS-Interop/CMS-InterOp/charter/01_PROJECT_CHARTER.md",
+        "size_bytes": 10158
+      }
+    },
+    {
+      "check_id": "CHK-002",
+      "description": "Eight Merge Decisions JSON Specification Parsability",
+      "status": "PASS",
+      "details": {
+        "path": "/Users/ashishsingh/Projects/CMS-Interop/CMS-InterOp/charter/eight_merge_decisions.json"
+      }
+    },
+    {
+      "check_id": "CHK-003",
+      "description": "AWS Environment Registration (Account ID 646044944744)",
+      "status": "PASS",
+      "details": {
+        "expected": "646044944744",
+        "actual": "646044944744"
+      }
+    },
+    {
+      "check_id": "CHK-004",
+      "description": "GCP Environment Registration (Project project-1c617076-69b8-413f-94d)",
+      "status": "PASS",
+      "details": {
+        "expected": "project-1c617076-69b8-413f-94d",
+        "actual": "project-1c617076-69b8-413f-94d"
+      }
+    },
+    {
+      "check_id": "CHK-005",
+      "description": "Synthetic Batch Constraint (SYN-ELP-EPA-01)",
+      "status": "PASS",
+      "details": {
+        "batch_id": "SYN-ELP-EPA-01"
+      }
+    },
+    {
+      "check_id": "CHK-006",
+      "description": "Production Zero-Load Gate Policy (abacus:production-tenant = none)",
+      "status": "PASS",
+      "details": {
+        "policy": "abacus:production-tenant = none"
+      }
+    },
+    {
+      "check_id": "CHK-007",
+      "description": "Exact Count of Eight Merge Decisions (AMD-001 through AMD-008)",
+      "status": "PASS",
+      "details": {
+        "count": 8
+      }
+    },
+    {
+      "check_id": "CHK-008",
+      "description": "Sequential Decision Identifier Integrity",
+      "status": "PASS",
+      "details": {
+        "expected": [
+          "AMD-001",
+          "AMD-002",
+          "AMD-003",
+          "AMD-004",
+          "AMD-005",
+          "AMD-006",
+          "AMD-007",
+          "AMD-008"
+        ],
+        "actual": [
+          "AMD-001",
+          "AMD-002",
+          "AMD-003",
+          "AMD-004",
+          "AMD-005",
+          "AMD-006",
+          "AMD-007",
+          "AMD-008"
+        ]
+      }
+    },
+    {
+      "check_id": "CHK-009",
+      "description": "Immutable Status LOCK Enforced on All 8 Decisions",
+      "status": "PASS",
+      "details": {
+        "statuses": {
+          "AMD-001": "LOCKED",
+          "AMD-002": "LOCKED",
+          "AMD-003": "LOCKED",
+          "AMD-004": "LOCKED",
+          "AMD-005": "LOCKED",
+          "AMD-006": "LOCKED",
+          "AMD-007": "LOCKED",
+          "AMD-008": "LOCKED"
+        }
+      }
+    },
+    {
+      "check_id": "CHK-010",
+      "description": "Robust Invariant Definitions on All Decisions",
+      "status": "PASS",
+      "details": {
+        "invariant_counts": {
+          "AMD-001": 3,
+          "AMD-002": 3,
+          "AMD-003": 3,
+          "AMD-004": 3,
+          "AMD-005": 3,
+          "AMD-006": 3,
+          "AMD-007": 3,
+          "AMD-008": 3
+        }
+      }
+    },
+    {
+      "check_id": "CHK-011",
+      "description": "Governing Sprint Traceability Across All Decisions",
+      "status": "PASS",
+      "details": {
+        "sprint_maps": {
+          "AMD-001": [
+            "S01",
+            "S03",
+            "S04",
+            "S07",
+            "S12"
+          ],
+          "AMD-002": [
+            "S01",
+            "S04",
+            "S07",
+            "S11"
+          ],
+          "AMD-003": [
+            "S00",
+            "S05",
+            "S06",
+            "S12"
+          ],
+          "AMD-004": [
+            "S00",
+            "S02",
+            "S03"
+          ],
+          "AMD-005": [
+            "S00",
+            "S01",
+            "S08",
+            "S11",
+            "S18"
+          ],
+          "AMD-006": [
+            "S02",
+            "S03",
+            "S05",
+            "S06",
+            "S08",
+            "S14"
+          ],
+          "AMD-007": [
+            "S05",
+            "S06",
+            "S12"
+          ],
+          "AMD-008": [
+            "S01",
+            "S04",
+            "S08",
+            "S10",
+            "S17"
+          ]
+        }
+      }
+    },
+    {
+      "check_id": "CHK-012",
+      "description": "Specific Domain Architectural Invariants (FHIR Store, Profile A, 6 CDS Hooks)",
+      "status": "PASS",
+      "details": {
+        "AMD-001_HealthLake": true,
+        "AMD-001_HealthcareAPI": true,
+        "AMD-003_ProfileA": true,
+        "AMD-007_SixHooks": true
+      }
+    }
+  ],
+  "summary": {
+    "total_checks": 12,
+    "passed_checks": 12,
+    "failed_checks": 0,
+    "all_passed": true
+  }
+}
