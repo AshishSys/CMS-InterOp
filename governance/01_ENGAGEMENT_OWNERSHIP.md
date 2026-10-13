@@ -103,4 +103,18 @@ In compliance with industry best practice (*"One accountable owner per engagemen
 
 ---
 
+## 6. Squad Leadership & Operational Lane Mapping
+
+Operational delivery across the engagement is partitioned into **six specialized engineering squads** mirroring Jira delivery lanes:
+- **`SO` (Cloud Foundation):** Multi-cloud Landing Zone, IAM, VPC, KMS. Lead: Ashish Singh.
+- **`DSP` (Ingest & Data Pipelines):** Clinical & claims feed ingestion, Airflow DAGs. Lead: Ashish Singh.
+- **`XPORT` (Lakehouse & Storage):** Medallion architecture (Bronze/Silver/Gold), Iceberg, CMEK. Lead: Ashish Singh.
+- **`CMS` (FHIR & ePA):** US Core profiles, Da Vinci PAS/CRD/DTR, X12 278 engine. Lead: Ashish Singh.
+- **`ONYX` (Access APIs):** SMART on FHIR OAuth 2.0 / OIDC, Patient/Provider Access APIs. Lead: Ashish Singh.
+- **`PRODOPS` (Quality & Conformance):** Inferno/Touchstone testing, HIPAA audits, automated QA. Lead: Ashish Singh.
+
+The authoritative registry of squad mandates, RACI alignments, and exam competencies is recorded in **`DOC-GOV-SQUADS-V1`** ([`governance/02_SQUAD_LEADS.md`](file:///Users/ashishsingh/Projects/CMS-Interop/CMS-InterOp/governance/02_SQUAD_LEADS.md) and [`governance/squad_leads.json`](file:///Users/ashishsingh/Projects/CMS-Interop/CMS-InterOp/governance/squad_leads.json)).
+
+---
+
 *Certified & Ratified by Ashish Singh, Lead Interoperability Architect.*

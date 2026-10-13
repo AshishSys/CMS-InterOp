@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "document_id": "DOC-GOV-SQUADS-V1",
+  "title": "CMS-0057 Squad Leadership and Jira Lane Registry",
+  "program": "CMS-0057 Interoperability Architecture Platform",
+  "sprint": "S00",
+  "ticket_id": "INT-380",
+  "story_id": "INT-303",
+  "jira_lanes": ["SO", "DSP", "XPORT", "CMS", "ONYX", "PRODOPS"],
+  "effective_date": "2026-10-13",
+  "status": "APPROVED",
+  "multi_cloud_environments": {
+    "primary_aws_account_id": "646044944744",
+    "primary_gcp_project_id": "project-1c617076-69b8-413f-94d"
+  },
+  "leadership_policy": {
+    "single_lead_per_lane": true,
+    "trial_consolidation_permitted": true,
+    "documentation_mandatory": true,
+    "review_cadence": "Quarterly"
+  },
+  "squads": [
+    {
+      "squad_id": "SQ-01",
+      "squad_name": "Cloud Foundation Squad",
+      "jira_lane": "SO",
+      "lane_description": "Systems Operations & Cloud Platform Infrastructure",
+      "lead": {
+        "name": "Ashish Singh",
+        "title": "Cloud Infrastructure & Landing Zone Lead",
+        "email": "squad.cloud@cmsinterop.internal"
+      },
+      "deliverables": [
+        "Landing Zones on AWS (646044944744) & GCP (project-1c617076-69b8-413f-94d)",
+        "Zero-trust IAM Policies and Workload Identity Federation",
+        "Cross-Cloud VPC Peering and Hybrid Interconnect",
+        "Terraform Infrastructure as Code Modules"
+      ],
+      "competencies": {
+        "aws_saa_c03": "Task 1.3 Determine appropriate data security controls and infrastructure boundaries",
+        "aws_dop_c02": "Task 6.2 Apply automation for security controls and data protection",
+        "google_pca": "1.1 Business requirements and 4.2 Stakeholder decisions"
+      }
+    },
+    {
+      "squad_id": "SQ-02",
+      "squad_name": "Ingestion & Data Pipelines Squad",
+      "jira_lane": "DSP",
+      "lane_description": "Data Streaming & Ingestion Pipelines",
+      "lead": {
+        "name": "Ashish Singh",
+        "title": "Data Ingestion & Integration Lead",
+        "email": "squad.ingest@cmsinterop.internal"
+      },
+      "deliverables": [
+        "Clinical & Claims Feed Ingestion (HL7 v2, X12 837/834/835, CCDA)",
+        "Streaming Ingestion Hubs (Amazon Kinesis & Google Pub/Sub)",
+        "Orchestration Workflows (Apache Airflow & Google Cloud Composer)",
+        "Schema Validation and Dead-Letter Queue (DLQ) Quarantine"
+      ],
+      "competencies": {
+        "aws_dea_c01": "Task 4.5 Understand data privacy and governance in ingestion pipelines",
+        "google_pde": "1.3 Map business requirements onto data pipeline architectures"
+      }
+    },
+    {
+      "squad_id": "SQ-03",
+      "squad_name": "Lakehouse & Data Platform Squad",
+      "jira_lane": "XPORT",
+      "lane_description": "Export & Lakehouse Storage",
+      "lead": {
+        "name": "Ashish Singh",
+        "title": "Lakehouse Architecture & Storage Lead",
+        "email": "squad.lakehouse@cmsinterop.internal"
+      },
+      "deliverables": [
+        "S3 / GCS Medallion Architecture (Bronze WORM, Silver Parquet/NDJSON, Gold Marts)",
+        "Apache Iceberg Table Formats with Time-Travel Querying",
+        "Analytical Query Engine Configuration (BigQuery, Athena)",
+        "Lifecycle Policies and 7-Year Regulatory Cold Storage"
+      ],
+      "competencies": {
+        "aws_dea_c01": "Task 4.5 Storage governance, encryption, data lifecycle, and archiving",
+        "google_pde": "1.1 Dev versus prod storage environment boundary segregation"
+      }
+    },
+    {
+      "squad_id": "SQ-04",
+      "squad_name": "FHIR & Prior Authorization (ePA) Squad",
+      "jira_lane": "CMS",
+      "lane_description": "CMS Compliance & Regulatory Clinical Services",
+      "lead": {
+        "name": "Ashish Singh",
+        "title": "Healthcare Interoperability & Clinical Lead",
+        "email": "squad.fhir-epa@cmsinterop.internal"
+      },
+      "deliverables": [
+        "HL7 FHIR Release 4.0.1 Conformance and US Core Profiles (v3.1.1 & v6.1.0)",
+        "Da Vinci Prior Authorization Support (PAS STU 2.0.1) FHIR-to-X12 278 Engine",
+        "Da Vinci Coverage Requirements Discovery (CRD) via CDS Hooks",
+        "Da Vinci Documentation Templates and Rules (DTR) using CQL",
+        "Turnaround compliance reporting (72h expedited, 7d standard)"
+      ],
+      "competencies": {
+        "google_pca": "1.1 Interoperability and federal regulatory compliance engineering",
+        "aws_saa_c03": "Task 1.3 Secure processing of Protected Health Information (PHI)"
+      }
+    },
+    {
+      "squad_id": "SQ-05",
+      "squad_name": "Patient & Provider Access APIs Squad",
+      "jira_lane": "ONYX",
+      "lane_description": "Onyx Interoperability API Gateway",
+      "lead": {
+        "name": "Ashish Singh",
+        "title": "Interoperability API & Gateway Lead",
+        "email": "squad.apis@cmsinterop.internal"
+      },
+      "deliverables": [
+        "SMART on FHIR OAuth 2.0 / OIDC Core Integration",
+        "CMS Patient Access API (45 CFR § 170.215)",
+        "CMS Provider Access and Payer-to-Payer Data Exchange APIs",
+        "Public Provider Directory API",
+        "Mutual TLS, Token Introspection, and Cloud Armor/Shield Rate Limiting"
+      ],
+      "competencies": {
+        "aws_saa_c03": "Task 1.3 Identity federation, OAuth 2.0 scopes, and secure API perimeter controls",
+        "aws_dop_c02": "Task 6.2 Continuous API gateway security policy enforcement"
+      }
+    },
+    {
+      "squad_id": "SQ-06",
+      "squad_name": "Quality & Compliance Verification Squad",
+      "jira_lane": "PRODOPS",
+      "lane_description": "Production Operations & Quality Assurance",
+      "lead": {
+        "name": "Ashish Singh",
+        "title": "Quality Assurance & Regulatory Audit Lead",
+        "email": "squad.quality@cmsinterop.internal"
+      },
+      "deliverables": [
+        "ONC Inferno and Aegis Touchstone Automated Conformance Test Kits",
+        "Synthetic Clinical Patient Test Beds (Synthea)",
+        "Continuous CI/CD Compliance Quality Gates (100% Pass Threshold)",
+        "Immutable Audit Logs for HIPAA, HITRUST CSF, and SOC 2 Reviews"
+      ],
+      "competencies": {
+        "aws_dop_c02": "Task 6.2 Apply automation for security controls and regulatory data protection",
+        "google_pca": "4.2 Operational excellence, auditing, and compliance verification"
+      }
+    }
+  ]
+}
