@@ -94,6 +94,18 @@ Ratified under **Project Charter Document ID: `CHARTER-CMS0057-2026-V1`** (Linea
 
 ---
 
+## 3.1 Canonical Kickoff Documentation Pack
+
+Per ticket **INT-378** (`S00-ST01-T02` / Jira `DSP-6547`), all cross-functional squads are pinned to three canonical architectural specifications maintained under [`kickoff_pack/01_KICKOFF_PACK_MANIFEST.md`](file:///Users/ashishsingh/Projects/CMS-Interop/CMS-InterOp/kickoff_pack/01_KICKOFF_PACK_MANIFEST.md):
+
+| Document Code | Document Title | Canonical Path | Checksum (SHA-256) | Squad Assignment |
+| :--- | :--- | :--- | :--- | :--- |
+| **DOC-01-ARCH** | **Consolidated Architecture Specification** | `kickoff_pack/docs/01-Patient-Access-API-From-Scratch-Plan.pdf` | `c33b328c789011bff...` | Access APIs, Lakehouse, Cloud Infra |
+| **DOC-02-SETUP** | **Services Setup & Verification Log** | `kickoff_pack/docs/Environment_Setup_Verification_Log.pdf` | `4d4a4db07d4b2a6...` | Cloud Infra, FHIR & ePA, QA Squad |
+| **DOC-03-STEPS** | **Kickoff Steps & Delivery Lifecycle** | `kickoff_pack/docs/03-Onyx-Sprints-and-Delivery-Lifecycle.pdf` | `d90535e5c09d659...` | Ingestion, Lakehouse, QA Squad |
+
+---
+
 ## 4. SDLC DevOps Lifecycle Standard
 
 Every ticket follows the standard DevOps progression across Linear, Git, and automated test runners:
