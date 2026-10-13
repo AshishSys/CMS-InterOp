@@ -117,6 +117,23 @@ Per ticket **INT-379** (`S00-ST02-T01` / Jira `ELP-1`), single accountable gover
 
 ---
 
+## 3.3 Six Engineering Squads & Jira Lane Ownership
+
+Per ticket **INT-380** (`S00-ST02-T02` / Jira lanes `SO`, `DSP`, `XPORT`, `CMS`, `ONYX`, `PRODOPS`), delivery is partitioned into six specialized engineering squads documented under canonical charter **`DOC-GOV-SQUADS-V1`** ([`governance/02_SQUAD_LEADS.md`](file:///Users/ashishsingh/Projects/CMS-Interop/CMS-InterOp/governance/02_SQUAD_LEADS.md) and [`governance/squad_leads.json`](file:///Users/ashishsingh/Projects/CMS-Interop/CMS-InterOp/governance/squad_leads.json)):
+
+| Squad ID | Squad Name | Jira Lane Key | Named Squad Lead | Contact Identity | Architectural Domain & Focus |
+| :--- | :--- | :---: | :--- | :--- | :--- |
+| **SQ-01** | **Cloud Foundation Squad** | `SO` | **Ashish Singh** | `squad.cloud@cmsinterop.internal` | Multi-Cloud Landing Zones, IAM, VPC, KMS, CI/CD, Network Peering |
+| **SQ-02** | **Ingestion & Data Pipelines Squad** | `DSP` | **Ashish Singh** | `squad.ingest@cmsinterop.internal` | HL7 v2, X12 EDI (837/834/835), CCDA, Streaming Ingest, Airflow / Composer |
+| **SQ-03** | **Lakehouse & Data Platform Squad** | `XPORT` | **Ashish Singh** | `squad.lakehouse@cmsinterop.internal` | S3 / GCS Medallion Lakehouse, Apache Iceberg, BigQuery / Athena, CMEK |
+| **SQ-04** | **FHIR & Prior Authorization (ePA) Squad** | `CMS` | **Ashish Singh** | `squad.fhir-epa@cmsinterop.internal` | HL7 FHIR US Core 3.1.1/6.1.0, Da Vinci CRD, DTR, PAS (STU 2.0.1), X12 278 Engine |
+| **SQ-05** | **Patient & Provider Access APIs Squad** | `ONYX` | **Ashish Singh** | `squad.apis@cmsinterop.internal` | SMART on FHIR OAuth 2.0 / OIDC, Patient Access, Provider Access, Payer-to-Payer |
+| **SQ-06** | **Quality & Compliance Verification Squad** | `PRODOPS` | **Ashish Singh** | `squad.quality@cmsinterop.internal` | Inferno / Touchstone Conformance, Synthea EHR, HIPAA/HITRUST, SOC 2, Automated QA |
+
+*Target Environments: Primary AWS Account `646044944744` & Primary GCP Project `project-1c617076-69b8-413f-94d`.*
+
+---
+
 ## 4. SDLC DevOps Lifecycle Standard
 
 Every ticket follows the standard DevOps progression across Linear, Git, and automated test runners:

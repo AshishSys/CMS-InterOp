@@ -1,0 +1,76 @@
+{
+  "timestamp": "2026-10-13T11:56:41.796859",
+  "ticket_id": "INT-380",
+  "jira_reference": "SO / DSP / XPORT / CMS / ONYX / PRODOPS lanes",
+  "sprint": "S00",
+  "total_checks": 10,
+  "passed_checks": 10,
+  "failed_checks": 0,
+  "overall_status": "PASS",
+  "cloud_accounts": {
+    "aws_account_id": "646044944744",
+    "gcp_project_id": "project-1c617076-69b8-413f-94d"
+  },
+  "test_results": [
+    {
+      "test_id": "TC-SQL-01",
+      "description": "Verify governance/02_SQUAD_LEADS.md existence and size",
+      "status": "PASS",
+      "details": "File exists: True, size: 12058 bytes"
+    },
+    {
+      "test_id": "TC-SQL-02",
+      "description": "Verify governance/squad_leads.json schema parsing",
+      "status": "PASS",
+      "details": "JSON valid and parsed"
+    },
+    {
+      "test_id": "TC-SQL-03",
+      "description": "Verify exactly 6 squads defined with expected IDs (SQ-01 to SQ-06)",
+      "status": "PASS",
+      "details": "Found squads: ['SQ-01', 'SQ-02', 'SQ-03', 'SQ-04', 'SQ-05', 'SQ-06']"
+    },
+    {
+      "test_id": "TC-SQL-04",
+      "description": "Verify all six Jira lanes mapped (SO, DSP, XPORT, CMS, ONYX, PRODOPS)",
+      "status": "PASS",
+      "details": "Mapped lanes: ['SO', 'DSP', 'XPORT', 'CMS', 'ONYX', 'PRODOPS']"
+    },
+    {
+      "test_id": "TC-SQL-05",
+      "description": "Verify Ashish Singh assigned as lead across all active lanes",
+      "status": "PASS",
+      "details": "Assigned leads: ['Ashish Singh']"
+    },
+    {
+      "test_id": "TC-SQL-06",
+      "description": "Verify lead email contact identities present for all 6 squads",
+      "status": "PASS",
+      "details": "Found contact emails: ['squad.cloud@cmsinterop.internal', 'squad.ingest@cmsinterop.internal', 'squad.lakehouse@cmsinterop.internal', 'squad.fhir-epa@cmsinterop.internal', 'squad.apis@cmsinterop.internal', 'squad.quality@cmsinterop.internal']"
+    },
+    {
+      "test_id": "TC-SQL-07",
+      "description": "Verify AWS Account ID 646044944744 in squad governance specs",
+      "status": "PASS",
+      "details": "AWS Account present in markdown: True, json: True"
+    },
+    {
+      "test_id": "TC-SQL-08",
+      "description": "Verify GCP Project ID project-1c617076-69b8-413f-94d in squad governance specs",
+      "status": "PASS",
+      "details": "GCP Project present in markdown: True, json: True"
+    },
+    {
+      "test_id": "TC-SQL-09",
+      "description": "Verify Project Charter Section 4.2 cross-references DOC-GOV-SQUADS-V1",
+      "status": "PASS",
+      "details": "DOC-GOV-SQUADS-V1 in charter: True"
+    },
+    {
+      "test_id": "TC-SQL-10",
+      "description": "Verify README Section 3.3 documents Six Squads & Jira Lane Ownership",
+      "status": "PASS",
+      "details": "Section 3.3 in README: True"
+    }
+  ]
+}

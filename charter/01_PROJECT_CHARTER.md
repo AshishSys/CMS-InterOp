@@ -130,15 +130,15 @@ flowchart TD
 
 ## 4. Governance RACI Matrix
 
-| Squad / Role | Accountable Lead | Responsibilities |
-| :--- | :--- | :--- |
-| **Sponsor / Product Owner** | Ashish Singh | Program acceptance, regulatory scope boundary, change request sign-off |
-| **Cloud Infrastructure Squad** | Lead: Cloud Eng | AWS & GCP baseline provisioning, VPC peering, KMS encryption, IAM least privilege |
-| **Data Ingestion Squad** | Lead: Ingest Eng | Airbyte connections, landing validation, bronze schema enforcement, quarantine |
-| **Lakehouse & Analytics Squad** | Lead: Lakehouse Eng | Silver/Gold transformations, Databricks/Snowflake models, SAM metrics |
-| **FHIR & ePA Squad** | Lead: FHIR SME | HealthLake/Healthcare API stores, PAS bundle mapping, CRD hook execution |
-| **Access APIs Squad** | Lead: API Architect | Apigee gateway proxying, BluesNet member-match proxy, OAuth2 token service |
-| **Quality & Compliance Squad** | Lead: QA Lead | Automated test harnesses, Inferno testing, certification evidence generation |
+| Squad / Role | Jira Lane | Accountable Lead | Responsibilities | Target Cloud Environment |
+| :--- | :---: | :--- | :--- | :--- |
+| **Sponsor / Product Owner** | `EXEC` | **Ashish Singh** | Program acceptance, regulatory scope boundary, change request sign-off | Enterprise Dual-Cloud |
+| **Cloud Infrastructure Squad** | `SO` | **Ashish Singh** | AWS & GCP baseline provisioning, VPC peering, KMS encryption, IAM least privilege | AWS `646044944744` / GCP `project-1c617076-69b8-413f-94d` |
+| **Data Ingestion Squad** | `DSP` | **Ashish Singh** | HL7 v2, X12 EDI (837/834/835), streaming ingest, Airflow / Composer DAGs | Kinesis / PubSub / Glue |
+| **Lakehouse & Analytics Squad** | `XPORT` | **Ashish Singh** | Medallion Lakehouse (Bronze/Silver/Gold), Iceberg format, BigQuery/Athena | S3 / GCS Data Lakes |
+| **FHIR & ePA Squad** | `CMS` | **Ashish Singh** | HealthLake / Healthcare API stores, PAS bundle mapping, CRD/DTR CDS hooks | FHIR R4 Dual-Track |
+| **Access APIs Squad** | `ONYX` | **Ashish Singh** | SMART on FHIR OAuth 2.0 / OIDC gateway, Patient/Provider Access APIs | Apigee / API Gateway |
+| **Quality & Compliance Squad** | `PRODOPS` | **Ashish Singh** | Automated test harnesses, Inferno testing, HIPAA/HITRUST certification | CI/CD Compliance Gates |
 
 ---
 
@@ -150,6 +150,16 @@ Per ticket **INT-379** (`S00-ST02-T01` / Jira `ELP-1`) and governed by [`governa
 * **Accountable Product Owner:** **Ashish Singh** ([@AshishSys](https://github.com/AshishSys)) — Single accountable owner with unilateral authority to accept or reject functional and architectural scope across all sprints.
 * **Named Delegate:** Deputy Product Owner / Lead Clinical Interoperability Architect (Designated operational proxy).
 * **Scope Boundary Rule:** Scope changes, profile migrations, or invariant waivers cannot be enacted through PRs without Product Owner written approval.
+
+---
+
+## 4.2 Squad Leadership & Jira Lane Assignments (INT-380 / DOC-GOV-SQUADS-V1)
+
+Per ticket **INT-380** (`S00-ST02-T02` / Jira lanes `SO`, `DSP`, `XPORT`, `CMS`, `ONYX`, `PRODOPS`) and governed by [`governance/02_SQUAD_LEADS.md`](file:///Users/ashishsingh/Projects/CMS-Interop/CMS-InterOp/governance/02_SQUAD_LEADS.md) and [`governance/squad_leads.json`](file:///Users/ashishsingh/Projects/CMS-Interop/CMS-InterOp/governance/squad_leads.json):
+
+* **One Lead Per Lane Policy:** Each functional engineering lane maintains a designated, named technical lead. Ashish Singh is formally appointed across the six active delivery lanes for the Phase 0 / Sprint 00 ramp-up.
+* **Lane Isolation & Architectural Boundary:** Squad boundaries enforce data governance, privacy rules, and least privilege before cloud resources are instantiated on AWS (`646044944744`) or GCP (`project-1c617076-69b8-413f-94d`).
+* **Competency Alignment:** Fully mapped to AWS DEA-C01 (Data Privacy & Governance), AWS SAA-C03 (Data Security Controls), AWS DOP-C02 (Automation for Security Controls), Google Professional Cloud Architect (Business Requirements & Stakeholder Decisions), and Google Professional Data Engineer (Dev vs Prod Architecture).
 
 ---
 
