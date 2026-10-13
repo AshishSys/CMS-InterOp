@@ -1,0 +1,108 @@
+{
+  "suite_name": "INT-379 Engagement Ownership & Scope Authority Verification Suite",
+  "timestamp": "2026-10-13T11:45:20.881178",
+  "ticket_id": "INT-379",
+  "ticket_code": "S00-ST02-T01",
+  "jira_ref": "ELP-1",
+  "lead_architect": "Ashish Singh",
+  "checks": [
+    {
+      "check_id": "CHK-001",
+      "description": "Engagement Ownership Markdown Document Presence & Size",
+      "status": "PASS",
+      "details": {
+        "path": "/Users/ashishsingh/Projects/CMS-Interop/CMS-InterOp/governance/01_ENGAGEMENT_OWNERSHIP.md",
+        "size_bytes": 6997
+      }
+    },
+    {
+      "check_id": "CHK-002",
+      "description": "Engagement Ownership JSON Specification Parsability",
+      "status": "PASS",
+      "details": {
+        "path": "/Users/ashishsingh/Projects/CMS-Interop/CMS-InterOp/governance/engagement_ownership.json"
+      }
+    },
+    {
+      "check_id": "CHK-003",
+      "description": "AWS Environment Registration (Account ID 646044944744)",
+      "status": "PASS",
+      "details": {
+        "expected": "646044944744",
+        "actual": "646044944744"
+      }
+    },
+    {
+      "check_id": "CHK-004",
+      "description": "GCP Environment Registration (Project project-1c617076-69b8-413f-94d)",
+      "status": "PASS",
+      "details": {
+        "expected": "project-1c617076-69b8-413f-94d",
+        "actual": "project-1c617076-69b8-413f-94d"
+      }
+    },
+    {
+      "check_id": "CHK-005",
+      "description": "Executive Sponsor Role & Responsibilities Defined",
+      "status": "PASS",
+      "details": {
+        "title": "VP / Head of Enterprise Interoperability",
+        "responsibilities_count": 4
+      }
+    },
+    {
+      "check_id": "CHK-006",
+      "description": "Accountable Product Owner Defined (Ashish Singh with Scope Authority)",
+      "status": "PASS",
+      "details": {
+        "name": "Ashish Singh",
+        "github_handle": "AshishSys",
+        "responsibilities_count": 4
+      }
+    },
+    {
+      "check_id": "CHK-007",
+      "description": "Named Delegate Protocol & Authority Boundaries Defined",
+      "status": "PASS",
+      "details": {
+        "role": "Deputy Product Owner",
+        "restrictions_count": 3
+      }
+    },
+    {
+      "check_id": "CHK-008",
+      "description": "Scope Authority Matrix Completeness (All 4 Decision Domains Mapped)",
+      "status": "PASS",
+      "details": {
+        "mapped_domains": [
+          "accept_reject_sprint_scope",
+          "approve_architecture_change_requests",
+          "production_release_gate_clearance",
+          "synthetic_population_adjustments"
+        ]
+      }
+    },
+    {
+      "check_id": "CHK-009",
+      "description": "Project Charter Binding (01_PROJECT_CHARTER.md Section 4.1)",
+      "status": "PASS",
+      "details": {
+        "charter_path": "/Users/ashishsingh/Projects/CMS-Interop/CMS-InterOp/charter/01_PROJECT_CHARTER.md"
+      }
+    },
+    {
+      "check_id": "CHK-010",
+      "description": "Dedicated Ticket Artifact Directory Presence (/Linear-Tickets/INT-379/)",
+      "status": "PASS",
+      "details": {
+        "ticket_dir": "/Users/ashishsingh/Projects/CMS-Interop/Linear-Tickets/INT-379"
+      }
+    }
+  ],
+  "summary": {
+    "total_checks": 10,
+    "passed_checks": 10,
+    "failed_checks": 0,
+    "all_passed": true
+  }
+}

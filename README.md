@@ -106,6 +106,17 @@ Per ticket **INT-378** (`S00-ST01-T02` / Jira `DSP-6547`), all cross-functional 
 
 ---
 
+## 3.2 Engagement Ownership & Scope Authority
+
+Per ticket **INT-379** (`S00-ST02-T01` / Jira `ELP-1`), single accountable governance is established under [`governance/01_ENGAGEMENT_OWNERSHIP.md`](file:///Users/ashishsingh/Projects/CMS-Interop/CMS-InterOp/governance/01_ENGAGEMENT_OWNERSHIP.md):
+
+* **Executive Sponsor:** VP / Head of Enterprise Interoperability (Strategic funding, regulatory sign-off, legal risk acceptance).
+* **Accountable Product Owner:** **Ashish Singh** ([@AshishSys](https://github.com/AshishSys)) — Unilateral authority to accept or reject functional and architectural scope across all sprints.
+* **Named Delegate:** Deputy Product Owner / Lead Clinical Interoperability Architect (Designated operational proxy).
+* **Binding Governance:** Sprint scopes, prior auth profiles, and production gating policies cannot be modified via pull requests without formal Product Owner written authorization.
+
+---
+
 ## 4. SDLC DevOps Lifecycle Standard
 
 Every ticket follows the standard DevOps progression across Linear, Git, and automated test runners:

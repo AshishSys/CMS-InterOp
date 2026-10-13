@@ -142,6 +142,17 @@ flowchart TD
 
 ---
 
+## 4.1 Engagement Ownership & Scope Authority (INT-379 / ELP-1)
+
+Per ticket **INT-379** (`S00-ST02-T01` / Jira `ELP-1`) and governed by [`governance/01_ENGAGEMENT_OWNERSHIP.md`](file:///Users/ashishsingh/Projects/CMS-Interop/CMS-InterOp/governance/01_ENGAGEMENT_OWNERSHIP.md):
+
+* **Executive Sponsor:** VP / Head of Enterprise Interoperability (Budget, regulatory commitments, legal risk acceptance).
+* **Accountable Product Owner:** **Ashish Singh** ([@AshishSys](https://github.com/AshishSys)) — Single accountable owner with unilateral authority to accept or reject functional and architectural scope across all sprints.
+* **Named Delegate:** Deputy Product Owner / Lead Clinical Interoperability Architect (Designated operational proxy).
+* **Scope Boundary Rule:** Scope changes, profile migrations, or invariant waivers cannot be enacted through PRs without Product Owner written approval.
+
+---
+
 ## 5. Architecture Change Control Protocol
 
 Any proposed modification to the architectural baseline must follow this four-stage governance cycle:
