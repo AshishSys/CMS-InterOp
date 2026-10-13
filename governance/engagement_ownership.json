@@ -1,0 +1,84 @@
+{
+  "governance_metadata": {
+    "document_id": "DOC-GOV-OWNERSHIP-V1",
+    "ticket_id": "INT-379",
+    "ticket_code": "S00-ST02-T01",
+    "jira_reference": "ELP-1",
+    "parent_charter_id": "CHARTER-CMS0057-2026-V1",
+    "version": "1.0.0",
+    "status": "APPROVED_AND_LOCKED",
+    "ratified_date": "2026-10-13",
+    "cloud_environments": {
+      "aws_account_id": "646044944744",
+      "aws_region": "us-east-1",
+      "gcp_project_id": "project-1c617076-69b8-413f-94d",
+      "gcp_region": "us-central1",
+      "local_fhir_server": "http://localhost:4080",
+      "synthetic_batch_id": "SYN-ELP-EPA-01",
+      "production_isolation": "abacus:production-tenant = none"
+    }
+  },
+  "accountable_entities": {
+    "executive_sponsor": {
+      "role": "Executive Sponsor",
+      "title": "VP / Head of Enterprise Interoperability",
+      "governance_level": "Executive & Regulatory Steering",
+      "responsibilities": [
+        "Executive accountability for CMS-0057-F compliance",
+        "Final approval on Architecture Change Requests (ACRs)",
+        "Legal risk acceptance and capital budget authority",
+        "Binding arbitration on contested scope"
+      ],
+      "delegation_active": true
+    },
+    "product_owner": {
+      "role": "Accountable Product Owner",
+      "name": "Ashish Singh",
+      "github_handle": "AshishSys",
+      "title": "Lead Interoperability Architect & Technical Product Owner",
+      "governance_level": "Operational Scope Authority & Architecture Contract Lead",
+      "responsibilities": [
+        "Unilateral authority to accept or reject functional and architectural scope",
+        "Enforcement of Eight Architectural Merge Decisions (AMD-001 through AMD-008)",
+        "SDLC compliance gating and Merge Request approval",
+        "Data privacy boundary authorization and synthetic population gating"
+      ],
+      "named_delegate": "Deputy Product Owner / Lead Clinical Interoperability Architect"
+    },
+    "named_delegate": {
+      "role": "Deputy Product Owner",
+      "title": "Lead Clinical Interoperability Architect",
+      "proxy_authority": [
+        "Accept or reject user-story level functional requirements within AMD boundaries",
+        "Stand-in operational authority during Product Owner absence",
+        "Facilitate sprint planning and acceptance testing"
+      ],
+      "restrictions": [
+        "Cannot modify core Architectural Merge Decisions (AMD-001 through AMD-008)",
+        "Cannot approve Architecture Change Requests (ACRs) without primary PO concurrence",
+        "Cannot waive production isolation gates"
+      ]
+    }
+  },
+  "scope_authority_matrix": {
+    "accept_reject_sprint_scope": {
+      "accountable": "Ashish Singh (Product Owner)",
+      "consulted": "Named Delegate",
+      "informed": "Executive Sponsor"
+    },
+    "approve_architecture_change_requests": {
+      "accountable": "Ashish Singh (Product Owner)",
+      "approver": "Executive Sponsor",
+      "consulted": "Named Delegate & Squad Leads"
+    },
+    "production_release_gate_clearance": {
+      "accountable": "Ashish Singh (Product Owner)",
+      "approver": "Executive Sponsor",
+      "gate_criteria": "Security, HIPAA, and empty-production audit sign-off"
+    },
+    "synthetic_population_adjustments": {
+      "accountable": "Ashish Singh (Product Owner)",
+      "constraint": "SYN-ELP-EPA-01 longitudinal consistency (50 patients)"
+    }
+  }
+}
