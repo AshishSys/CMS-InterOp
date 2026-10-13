@@ -1,0 +1,173 @@
+{
+  "project_metadata": {
+    "project_name": "CMS-InterOp",
+    "document_id": "CHARTER-CMS0057-2026-V1",
+    "version": "1.0.0",
+    "jira_reference": "ELP-1",
+    "linear_ticket_id": "INT-377",
+    "ticket_code": "S00-ST01-T01",
+    "lead_architect": "Ashish Singh",
+    "ratified_date": "2026-10-13",
+    "status": "LOCKED",
+    "environments": {
+      "aws_account_id": "646044944744",
+      "aws_region": "us-east-1",
+      "gcp_project_id": "project-1c617076-69b8-413f-94d",
+      "gcp_region": "us-central1",
+      "local_fhir_server": "http://localhost:4080",
+      "synthetic_batch_id": "SYN-ELP-EPA-01",
+      "production_tenant_isolation": "abacus:production-tenant = none"
+    }
+  },
+  "decisions": [
+    {
+      "id": "AMD-001",
+      "title": "Dual-Track FHIR Datastore Architecture",
+      "category": "Storage & Data Tier",
+      "status": "LOCKED",
+      "selected_options": {
+        "track_a_aws": "AWS HealthLake (HL7 FHIR R4)",
+        "track_b_gcp": "Google Cloud Healthcare API (FHIR R4 dataset & store)",
+        "local_testing": "Firely Server R4"
+      },
+      "immutable_invariants": [
+        "Primary clinical data store must conform strictly to HL7 FHIR R4 schema.",
+        "No proprietary or non-FHIR document databases permitted as primary clinical datastores.",
+        "No ad-hoc swapping of datastore engine within sprint PRs."
+      ],
+      "governing_sprints": ["S01", "S03", "S04", "S07", "S12"],
+      "change_control": "Requires Architecture Change Request (ACR)"
+    },
+    {
+      "id": "AMD-002",
+      "title": "Edge Gateway Security & Public Doorway Isolation",
+      "category": "Network & Edge Security",
+      "status": "LOCKED",
+      "selected_options": {
+        "gateway": "Apigee / APISIX Proxy",
+        "auth_standards": ["mTLS", "OAuth 2.0 SMART on FHIR", "OpenID Connect"],
+        "network_topology": "Bridge VPC for edge ingress; private Data VPC with zero internet egress"
+      },
+      "immutable_invariants": [
+        "All incoming requests terminate at edge gateway; zero direct internet access to backend stores.",
+        "Pipeline service credentials must remain cryptographically segregated from member bearer tokens.",
+        "Public access blocked on all cloud buckets (BlockPublicAccess=true)."
+      ],
+      "governing_sprints": ["S01", "S04", "S07", "S11"],
+      "change_control": "Requires Architecture Change Request (ACR)"
+    },
+    {
+      "id": "AMD-003",
+      "title": "Electronic Prior Authorization (ePA) Profile A Selection",
+      "category": "Clinical Interoperability",
+      "status": "LOCKED",
+      "selected_options": {
+        "selected_profile": "Profile A (Flat-File Ingestion to FHIR PAS)",
+        "excluded_profiles": ["Option B (Real-time UM FHIR-to-FHIR)", "Hybrid Unverified"]
+      },
+      "immutable_invariants": [
+        "Prior authorization pipeline must ingest CSV/JSON flat batches into FHIR PAS Claim and ClaimResponse resources.",
+        "Daily batch reconciliation pattern enforced.",
+        "No sprint may unilaterally migrate endpoints to Option B without change request approval."
+      ],
+      "governing_sprints": ["S00", "S05", "S06", "S12"],
+      "change_control": "Requires Architecture Change Request (ACR)"
+    },
+    {
+      "id": "AMD-004",
+      "title": "Claims-Driven Attribution & Single Line of Business Scope",
+      "category": "Business Logic & Attribution",
+      "status": "LOCKED",
+      "selected_options": {
+        "line_of_business": "Medicaid FFS / Managed Care",
+        "attribution_methodology": "Claims-driven 24-month lookback + PCP encounter validation",
+        "fhir_resource": "PDexProviderGroup at Organization + Location + Provider level"
+      },
+      "immutable_invariants": [
+        "Active treatment relationship must be established prior to bulk provider export.",
+        "Member opt-out consent must be honored before any data transmission.",
+        "Secondary commercial lines of business excluded from baseline scope."
+      ],
+      "governing_sprints": ["S00", "S02", "S03"],
+      "change_control": "Requires Architecture Change Request (ACR)"
+    },
+    {
+      "id": "AMD-005",
+      "title": "Synthetic Data Isolation & Hard Production Gate Policy",
+      "category": "Data Governance & Compliance",
+      "status": "LOCKED",
+      "selected_options": {
+        "synthetic_batch": "SYN-ELP-EPA-01",
+        "patient_population_size": 50,
+        "production_gate": "Hard-gated (Zero PHI / Zero real member records)"
+      },
+      "immutable_invariants": [
+        "Development and staging pipelines exclusively process synthetic batch SYN-ELP-EPA-01.",
+        "Production environment remains strictly empty (abacus:production-tenant = none).",
+        "No live PHI/PII permitted until formal HIPAA audit and security gate sign-off."
+      ],
+      "governing_sprints": ["S00", "S01", "S08", "S11", "S18"],
+      "change_control": "Requires Architecture Change Request (ACR)"
+    },
+    {
+      "id": "AMD-006",
+      "title": "Two-Speed Ingestion Cadence & Idempotent Schema Quarantine",
+      "category": "Data Engineering & Pipeline",
+      "status": "LOCKED",
+      "selected_options": {
+        "weekly_cadence": "Weekly Master Batch (Demographics, Coverage, Historical Encounters)",
+        "nightly_cadence": "Nightly Reconciliation Prefix (ClaimResponse & Pre-auth EOB mapping)"
+      },
+      "immutable_invariants": [
+        "Declared schema enforcement on all bronze landings; missing columns or unmapped fields quarantined.",
+        "Reconciliation equality checks must pass: landing row count == bronze count == silver count.",
+        "Streaming gold pipelines disallowed without certified bronze batch integrity."
+      ],
+      "governing_sprints": ["S02", "S03", "S05", "S06", "S08", "S14"],
+      "change_control": "Requires Architecture Change Request (ACR)"
+    },
+    {
+      "id": "AMD-007",
+      "title": "CDS Hooks Conformance & Sub-5-Second CRD Latency SLA",
+      "category": "Clinical Decision Support",
+      "status": "LOCKED",
+      "selected_options": {
+        "supported_hooks": [
+          "order-select",
+          "order-sign",
+          "appointment-book",
+          "encounter-start",
+          "encounter-discharge",
+          "patient-view"
+        ],
+        "latency_sla": "P99 < 5.0 seconds",
+        "lookup_cache": "PostgreSQL / Cloud SQL Read Replica",
+        "fail_safe_rule": "Unlisted clinical codes default to 'Prior Authorization Required'"
+      },
+      "immutable_invariants": [
+        "All six mandatory CDS Hooks supported.",
+        "Hook evaluations executed against fast-path relational cache; no heavy lakehouse scans in path.",
+        "Fail-safe rule must prevent false negatives on prior authorization requirement."
+      ],
+      "governing_sprints": ["S05", "S06", "S12"],
+      "change_control": "Requires Architecture Change Request (ACR)"
+    },
+    {
+      "id": "AMD-008",
+      "title": "Privacy Invariants & Count-Only Audit Trail Standard",
+      "category": "Security & Auditability",
+      "status": "LOCKED",
+      "selected_options": {
+        "audit_stores": ["MongoDB Audit Database", "AWS CloudTrail", "GCP Cloud Audit Logs"],
+        "logged_attributes": ["batch_id", "timestamp", "principal_arn", "latency_ms", "http_status", "record_count"]
+      },
+      "immutable_invariants": [
+        "Zero member identifiers, SSNs, claim values, or clinical payloads logged.",
+        "Zero payload tokens in AI assistant prompts or ticket descriptions.",
+        "Audit logs immutable and retained in encrypted dedicated storage buckets."
+      ],
+      "governing_sprints": ["S01", "S04", "S08", "S10", "S17"],
+      "change_control": "Requires Architecture Change Request (ACR)"
+    }
+  ]
+}
