@@ -39,6 +39,19 @@ All pipeline execution, infrastructure provisioning, and evidence collection are
 
 ---
 
+## 2.1 Canonical Kickoff Documentation Pack Reference
+
+In accordance with ticket **INT-378** (`S00-ST01-T02` / Jira `DSP-6547`), all cross-functional squads are pinned to the following three canonical kickoff packs managed under [`kickoff_pack/01_KICKOFF_PACK_MANIFEST.md`](file:///Users/ashishsingh/Projects/CMS-Interop/CMS-InterOp/kickoff_pack/01_KICKOFF_PACK_MANIFEST.md):
+
+1. **DOC-01-ARCH (Consolidated Architecture):** [`kickoff_pack/docs/01-Patient-Access-API-From-Scratch-Plan.pdf`](file:///Users/ashishsingh/Projects/CMS-Interop/CMS-InterOp/kickoff_pack/docs/01-Patient-Access-API-From-Scratch-Plan.pdf)  
+   *SHA-256:* `c33b328c789011bff255e707cf1dd02d4e2fe2de2594d99fefef75efef25ae66`
+2. **DOC-02-SETUP (Services Setup & Environment Verification):** [`kickoff_pack/docs/Environment_Setup_Verification_Log.pdf`](file:///Users/ashishsingh/Projects/CMS-Interop/CMS-InterOp/kickoff_pack/docs/Environment_Setup_Verification_Log.pdf)  
+   *SHA-256:* `4d4a4db07d4b2a6ab4cd160b20ca90689527d9cdf70598a44c351bfb69dad2e1`
+3. **DOC-03-STEPS (Kickoff Steps & Delivery Lifecycle):** [`kickoff_pack/docs/03-Onyx-Sprints-and-Delivery-Lifecycle.pdf`](file:///Users/ashishsingh/Projects/CMS-Interop/CMS-InterOp/kickoff_pack/docs/03-Onyx-Sprints-and-Delivery-Lifecycle.pdf)  
+   *SHA-256:* `d90535e5c09d6595ae31d98e2cde9e599ae96e522652670d6475b1c0d4729942`
+
+---
+
 ## 3. The Eight Binding Architectural Merge Decisions
 
 To guarantee architectural integrity across distributed engineering squads and prevent scope creep, the following eight decisions are filed as immutable build constraints:

@@ -1,0 +1,128 @@
+{
+  "manifest_metadata": {
+    "manifest_id": "PACK-CMS0057-KICKOFF-V1",
+    "ticket_id": "INT-378",
+    "ticket_code": "S00-ST01-T02",
+    "jira_reference": "DSP-6547",
+    "parent_charter_id": "CHARTER-CMS0057-2026-V1",
+    "lead_architect": "Ashish Singh",
+    "ratified_date": "2026-10-13",
+    "version": "1.0.0",
+    "status": "APPROVED_AND_LOCKED",
+    "cloud_environments": {
+      "aws_account_id": "646044944744",
+      "aws_region": "us-east-1",
+      "gcp_project_id": "project-1c617076-69b8-413f-94d",
+      "gcp_region": "us-central1",
+      "local_fhir_server": "http://localhost:4080",
+      "synthetic_batch_id": "SYN-ELP-EPA-01",
+      "production_isolation": "abacus:production-tenant = none"
+    }
+  },
+  "canonical_documents": [
+    {
+      "document_code": "DOC-01-ARCH",
+      "title": "Consolidated Architecture Specification",
+      "subtitle": "Patient Access API From-Scratch Multi-Cloud Architecture Plan",
+      "file_path": "pdf/01-Patient-Access-API-From-Scratch-Plan.pdf",
+      "pages": 8,
+      "size_bytes": 25848,
+      "sha256": "c33b328c789011bff255e707cf1dd02d4e2fe2de2594d99fefef75efef25ae66",
+      "primary_domains": [
+        "Patient Access API",
+        "Dual-Track Multi-Cloud Ingest",
+        "S3 to Databricks/GCS Pipelines",
+        "Member-Scoped API Gateway"
+      ],
+      "assigned_squads": ["Access APIs Squad", "Lakehouse & Analytics Squad", "Cloud Infrastructure Squad", "Data Ingestion Squad"]
+    },
+    {
+      "document_code": "DOC-02-SETUP",
+      "title": "Services Setup & Environment Verification Log",
+      "subtitle": "FHIR SME Program: Large POC Architecture & Environment Setup Verification Log",
+      "file_path": "Environment_Setup_Verification_Log.pdf",
+      "pages": 4,
+      "size_bytes": 18925,
+      "sha256": "4d4a4db07d4b2a6ab4cd160b20ca90689527d9cdf70598a44c351bfb69dad2e1",
+      "primary_domains": [
+        "AWS Baseline & HealthLake Configuration",
+        "GCP Cloud Healthcare API Dataset Setup",
+        "Firely Server Local R4 Test Harness",
+        "KMS Encryption & CloudTrail/Audit Logs"
+      ],
+      "assigned_squads": ["Cloud Infrastructure Squad", "FHIR & ePA Squad", "Quality & Compliance Squad"]
+    },
+    {
+      "document_code": "DOC-03-STEPS",
+      "title": "Kickoff Steps & Delivery Lifecycle Specification",
+      "subtitle": "Onyx Scrum Board 709 Delivery Lifecycle & Sprint Progression",
+      "file_path": "pdf/03-Onyx-Sprints-and-Delivery-Lifecycle.pdf",
+      "pages": 7,
+      "size_bytes": 25740,
+      "sha256": "d90535e5c09d6595ae31d98e2cde9e599ae96e522652670d6475b1c0d4729942",
+      "primary_domains": [
+        "Sprint 00 Through Sprint 18 Breakdown",
+        "Cross-Squad Work Hand-Off Protocols",
+        "Reconciliation & Batch Promotion Rules",
+        "Regulatory Reporting & Acceptance Criteria"
+      ],
+      "assigned_squads": ["Data Ingestion Squad", "Lakehouse & Analytics Squad", "FHIR & ePA Squad", "Quality & Compliance Squad"]
+    }
+  ],
+  "squad_directives": {
+    "cloud_infrastructure_squad": {
+      "lead": "Cloud Eng",
+      "assigned_docs": ["DOC-01-ARCH", "DOC-02-SETUP"],
+      "objectives": [
+        "AWS Account 646044944744 and GCP Project project-1c617076-69b8-413f-94d baseline verification",
+        "Zero internet egress on private data plane subnets",
+        "Customer-managed key encryption and zero public access buckets"
+      ]
+    },
+    "data_ingestion_squad": {
+      "lead": "Ingest Eng",
+      "assigned_docs": ["DOC-01-ARCH", "DOC-03-STEPS"],
+      "objectives": [
+        "Weekly master batch landings with declared schema quarantine",
+        "Idempotent ingestion of synthetic batch SYN-ELP-EPA-01",
+        "Airbyte connection definition alignment"
+      ]
+    },
+    "lakehouse_analytics_squad": {
+      "lead": "Lakehouse Eng",
+      "assigned_docs": ["DOC-01-ARCH", "DOC-03-STEPS"],
+      "objectives": [
+        "Bronze to Silver to Gold medallion transformation pipelines",
+        "Row count equality verification (landing == bronze == silver)",
+        "Nightly ClaimResponse to preauthorization EOB mapping"
+      ]
+    },
+    "fhir_epa_squad": {
+      "lead": "FHIR SME",
+      "assigned_docs": ["DOC-01-ARCH", "DOC-02-SETUP"],
+      "objectives": [
+        "Dual-track stores: AWS HealthLake and GCP Cloud Healthcare API",
+        "Profile A flat-file ingestion into FHIR PAS Claim and ClaimResponse",
+        "Sub-5-second latency SLA for all six CDS Hooks"
+      ]
+    },
+    "access_apis_squad": {
+      "lead": "API Architect",
+      "assigned_docs": ["DOC-01-ARCH", "DOC-02-SETUP"],
+      "objectives": [
+        "Apigee / APISIX gateway proxying with mTLS and SMART on FHIR OAuth 2.0",
+        "Pipeline service credentials segregated from member bearer tokens",
+        "BluesNet Proxy member-match integration"
+      ]
+    },
+    "quality_compliance_squad": {
+      "lead": "QA Lead",
+      "assigned_docs": ["DOC-02-SETUP", "DOC-03-STEPS"],
+      "objectives": [
+        "Automated verification test runner execution on all PRs",
+        "Audit trail enforcement: count-only logs in MongoDB, zero PHI in logs",
+        "Plan-Run-Artifacts-QA-Done regulatory PDF generation"
+      ]
+    }
+  }
+}
